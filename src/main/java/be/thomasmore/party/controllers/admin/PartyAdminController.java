@@ -41,6 +41,6 @@ public class PartyAdminController {
                                 Party party) {
         logger.info("partyEditPost " + id + " -- new name=" + party.getName());
         partyRepository.save(party);
-        return "admin/partyedit";
+        return "redirect:/partydetails/"+id;
     }
 }
