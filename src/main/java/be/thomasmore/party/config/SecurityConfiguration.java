@@ -50,6 +50,7 @@ public class SecurityConfiguration {
                 .loginPage("/user/login")
                 .permitAll()
         );
+        http.logout(form -> form.logoutUrl("/user/logout"));
 
         //to enable h2-console:
         http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));

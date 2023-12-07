@@ -16,4 +16,10 @@ public class UserController {
         if (principal != null) return "redirect:/partylist";
         return "user/login";
     }
+
+    @GetMapping("/logout")
+    public String logout(Model model, Principal principal) {
+        if (principal == null) return "redirect:/partylist";
+        return "user/logout";
+    }
 }
