@@ -44,7 +44,7 @@ public class SecurityConfiguration {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
 
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).authenticated()
+                .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasAuthority("ADMIN")
                 .anyRequest().permitAll());
         http.formLogin(Customizer.withDefaults());
 
