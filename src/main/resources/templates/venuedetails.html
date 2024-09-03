@@ -32,6 +32,12 @@
 
 <main class="container" th:object="${venue}">
     <h2 th:text="*{venueName}"></h2>
+    <div class="my-3 p-0">
+        <div>
+            zie <a th:href="*{linkMoreInfo}" th:text="*{linkMoreInfo}" target="_blank"/>
+        </div>
+    </div>
+
 </main>
 
 <footer class="footer mt-auto pt-2 border-top text-center" th:fragment="footerHome">
