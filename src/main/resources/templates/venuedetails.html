@@ -36,9 +36,25 @@
 <main class="container" th:object="${venue}">
     <h2 th:text="*{venueName}"></h2>
     <div class="my-3 p-0">
+        <div th:text="*{city}"/>
         <div>
             zie <a th:href="*{linkMoreInfo}" th:text="*{linkMoreInfo}" target="_blank"/>
         </div>
+    </div>
+    <h5>faciliteiten:</h5>
+    <div class="row mx-0">
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
+             th:text="|max *{capacity} personen|"/>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
+             th:text="|*{distanceFromPublicTransportInKm}km van openbaar vervoer|"/>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
+             th:text="|eten voorzien: *{foodProvided ? 'ja' : 'nee'}|"/>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
+             th:text="|binnen: *{indoor ? 'ja' : 'nee'}|"/>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
+             th:text="|buiten: *{outdoor ? 'ja' : 'nee'}|"/>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
+             th:text="|gratis parking: *{freeParkingAvailable ? 'ja' : 'nee'}|"/>
     </div>
 </main>
 
