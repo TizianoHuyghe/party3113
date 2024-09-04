@@ -17,6 +17,11 @@ public class ClientController {
     @Autowired
     ClientRepository clientRepository;
 
+    @GetMapping("/clienthome")
+    public String home(Model model) {
+        return "clienthome";
+    }
+
     @GetMapping("/clientgreeting")
     public String clientGreeting(Model model) {
         final Optional<Client> clientFromDb = clientRepository.findById(1);
