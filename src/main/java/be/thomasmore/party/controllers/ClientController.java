@@ -32,6 +32,17 @@ public class ClientController {
         return "clientgreeting";
     }
 
+    @GetMapping("/clientdetails")
+    public String clientDetails(Model model) {
+        final Optional<Client> clientFromDb = clientRepository.findById(1);
+        if (clientFromDb.isPresent()) {
+            final Client client = clientFromDb.get();
+            model.addAttribute("client", client);
+            model.addAttribute("discount", calculateDiscount(client));
+        }
+        return "clientdetails";
+    }
+
     private String getPrefix(Client client) {
         if (client.getNrOfOrders() < 10) return "";
         if (client.getNrOfOrders() < 50) return "beste ";
@@ -56,4 +67,8 @@ public class ClientController {
         return "";
     }
 
+    private double calculateDiscount(Client client) {
+        if (client.getTotalAmount() < 50) return 0;
+        return client.getTotalAmount() / 200;
+    }
 }
