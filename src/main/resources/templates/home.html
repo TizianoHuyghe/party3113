@@ -9,29 +9,8 @@
     <title>Let's party!</title>
 </head>
 <body class="home">
-<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerParty"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerParty">
-            <a class="navbar-brand text-warning" th:href="@{/home}">Let's Party!</a>
-            <ul class="navbar-nav me-auto my-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link " th:href="@{/home}">home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " th:href="@{/venuelist}">zalen</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " th:href="@{/about}">over mij</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="~{fragments/header :: navbar}"/>
 
 <main class="container">
     <h1>Hello</h1>
