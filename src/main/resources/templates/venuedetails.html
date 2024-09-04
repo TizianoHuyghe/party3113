@@ -33,7 +33,7 @@
     </div>
 </nav>
 
-<main class="container" th:object="${venue}">
+<main class="container" th:object="${venue}" th:if="${venue}">
     <h2 th:text="*{venueName}"></h2>
     <div class="my-3 p-0">
         <div th:text="*{city}"/>
@@ -56,6 +56,9 @@
         <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
              th:text="|gratis parking: *{freeParkingAvailable ? 'ja' : 'nee'}|"/>
     </div>
+</main>
+<main class="container" th:object="${venue}" th:unless="${venue}">
+    <p>geen geldige zaal gekozen</p>
 </main>
 
 <footer class="footer mt-auto pt-2 border-top text-center" th:fragment="footerHome">
