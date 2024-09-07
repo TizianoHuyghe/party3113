@@ -9,12 +9,17 @@
 <main class="container">
     <h2>zalen</h2>
     <div class="row">
+        <div class="col-12" th:text="|${nrOfVenues} zalen gevonden|"/>
+    </div>
+
+    <div class="row">
         <div th:each="venue: ${venues}"
              class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div class="card m-1 p-2 text-center">
                 <a th:href="@{|/venuedetails/${venue.id}|}"
                    class="link-dark text-decoration-none">
                     <h3 th:text="${venue.venueName}"></h3>
+                    <div th:text="|${venue.capacity} personen|"/>
                 </a>
             </div>
         </div>

@@ -18,7 +18,10 @@ public class VenueController {
     @GetMapping("/venuelist")
     public String venuelist(Model model) {
         final Iterable<Venue> allVenues = venueRepository.findAll();
+        long nrOfVenues = venueRepository.count();
+
         model.addAttribute("venues", allVenues);
+        model.addAttribute("nrOfVenues", nrOfVenues);
         return "venuelist";
     }
 
