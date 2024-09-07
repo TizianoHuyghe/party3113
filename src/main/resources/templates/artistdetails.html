@@ -8,6 +8,18 @@
 
 <main class="container" th:if="${artist}" th:object="${artist}">
     <h2 th:text="*{artistName}"/>
+    <div class="row">
+        <div class="col text-start">
+            <a th:href="@{|/artistdetails/${prevId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&lt;</button>
+            </a>
+        </div>
+        <div class="col text-end">
+            <a th:href="@{|/artistdetails/${nextId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&gt;</button>
+            </a>
+        </div>
+    </div>
     <div class="row mx-0">
         <h4 th:text="*{genre}"/>
         <div th:text="|portfolio: *{portfolio}|" th:if="*{!portfolio.isBlank()}"/>
