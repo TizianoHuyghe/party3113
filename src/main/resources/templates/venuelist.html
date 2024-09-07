@@ -9,24 +9,12 @@
 <main class="container">
     <h2>zalen</h2>
     <div class="row">
-        <div class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div th:each="venue: ${venues}"
+             class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div class="card m-1 p-2 text-center">
-                <a th:href="@{/venuedetails/1}" class="link-dark text-decoration-none">
-                    <h3>venue 1</h3>
-                </a>
-            </div>
-        </div>
-        <div class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <div class="card m-1 p-2 text-center">
-                <a th:href="@{/venuedetails/2}" class="link-dark text-decoration-none">
-                    <h3>venue 2</h3>
-                </a>
-            </div>
-        </div>
-        <div class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <div class="card m-1 p-2 text-center">
-                <a th:href="@{/venuedetails/3}" class="link-dark text-decoration-none">
-                    <h3>venue 3</h3>
+                <a th:href="@{|/venuedetails/${venue.id}|}"
+                   class="link-dark text-decoration-none">
+                    <h3 th:text="${venue.venueName}"></h3>
                 </a>
             </div>
         </div>
