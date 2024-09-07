@@ -26,8 +26,11 @@ public class VenueController {
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
         if (id == null) return "venuedetails";
         Optional<Venue> venueFromDb = venueRepository.findById(id);
+        long count = venueRepository.count();
         if (venueFromDb.isPresent()) {
             model.addAttribute("venue", venueFromDb.get());
+            model.addAttribute("prevId", id > 1 ? id - 1 : count);
+            model.addAttribute("nextId", id < count ? id + 1 : 1);
         }
         return "venuedetails";
     }

@@ -8,6 +8,18 @@
 
 <main class="container" th:object="${venue}" th:if="${venue}">
     <h2 th:text="*{venueName}"></h2>
+    <div class="row">
+        <div class="col text-start">
+            <a th:href="@{|/venuedetails/${prevId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&lt;</button>
+            </a>
+        </div>
+        <div class="col text-end">
+            <a th:href="@{|/venuedetails/${nextId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&gt;</button>
+            </a>
+        </div>
+    </div>
     <div class="my-3 p-0">
         <div th:text="*{city}"/>
         <div>
