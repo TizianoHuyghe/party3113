@@ -1,6 +1,7 @@
 package be.thomasmore.party.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
@@ -18,7 +19,7 @@ public class Party {
     private LocalDate date;
     private LocalTime doors;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;
 
     public Integer getId() {
