@@ -18,6 +18,9 @@ public class Party {
     private LocalDate date;
     private LocalTime doors;
 
+    @ManyToOne
+    private Venue venue;
+
     public Integer getId() {
         return id;
     }
@@ -74,5 +77,12 @@ public class Party {
         this.doors = doors;
     }
 
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
 }
 

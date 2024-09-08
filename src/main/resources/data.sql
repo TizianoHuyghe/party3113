@@ -125,3 +125,40 @@ VALUES (
 
 
 
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES
+ (1,  'Big Spring Party', 6, 10, '1 cocktail included',
+  '2025-03-21', '10:00', 1);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES
+ (2,  'Liberty 2022', 4, 6, 'free vestiaire, viplounge',
+  '2025-04-19', '22:00', 2);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES
+ (3,  'Uppercuts', null, null, ' ',
+'2022-03-16', '21:00', 4);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES
+ (4,  'Zoetzuur', null, null, 'Zoete house / Zure techno',
+  '2025-05-03', '21:00', 4);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES
+ (5,  'Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
+  '2025-04-25', '21:00', 4);
+
+INSERT INTO PARTY
+(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES
+    (6,  'Sapphire Soiree', 45, 45, 'JCI Mechelen bestaat 45 jaar! En dat saffieren jubileum vieren we graag in stijl met een galabal in Kasteel Tivoli. En jij kan erbij zijn!',
+     '2025-03-26', '21:00', 10);
+
