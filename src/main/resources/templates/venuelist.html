@@ -96,6 +96,82 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5 class="card-title">binnen</h5>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterIndoor" value=""
+                                               class="form-check-input mt-0"
+                                               aria-label="binnen ja en nee"
+                                               th:checked="${filterIndoor==null}">
+                                    </div>
+                                    <div class="input-group-text">alles</div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterIndoor" value="yes"
+                                               class="form-check-input mt-0"
+                                               aria-label="binnen ja"
+                                               th:checked="${filterIndoor==true}">
+                                    </div>
+                                    <div class="input-group-text">ja</div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterIndoor" value="no"
+                                               class="form-check-input mt-0"
+                                               aria-label="binnen nee"
+                                               th:checked="${filterIndoor==false}">
+                                    </div>
+                                    <div class="input-group-text">nee</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5 class="card-title">buiten</h5>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterOutdoor" value=""
+                                               class="form-check-input mt-0"
+                                               aria-label="buiten ja en nee"
+                                               th:checked="${filterOutdoor==null}">
+                                    </div>
+                                    <div class="input-group-text">alles</div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterOutdoor" value="yes"
+                                               class="form-check-input mt-0"
+                                               aria-label="buiten ja"
+                                               th:checked="${filterOutdoor==true}">
+                                    </div>
+                                    <div class="input-group-text">ja</div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterOutdoor" value="no"
+                                               class="form-check-input mt-0"
+                                               aria-label="buiten nee"
+                                               th:checked="${filterOutdoor==false}">
+                                    </div>
+                                    <div class="input-group-text">nee</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
