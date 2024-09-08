@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 85vw" >
+        <div class="modal-dialog" style="max-width: 85vw">
             <form th:action="@{/venuelist}">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -56,6 +56,44 @@
                                 <input type="number" aria-label="afstand van openbaar vervoer" name="maxDistance"
                                        th:value="${param.maxDistance} ? ${param.maxDistance} : ''" step="1">
                                 <span class="input-group-text">km maximum</span>
+                            </div>
+                        </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5 class="card-title">eten mogelijk</h5>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterFood" value=""
+                                               class="form-check-input mt-0"
+                                               aria-label="eten ja en nee"
+                                               th:checked="${filterFood==null}">
+                                    </div>
+                                    <div class="input-group-text">alles</div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterFood" value="true"
+                                               class="form-check-input mt-0"
+                                               aria-label="eten ja"
+                                               th:checked="${filterFood==true}">
+                                    </div>
+                                    <div class="input-group-text">ja</div>
+                                </div>
+                            </div>
+                            <div class="col-4 p-1">
+                                <div class="input-group p-1">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="filterFood" value="no"
+                                               class="form-check-input mt-0"
+                                               aria-label="eten nee"
+                                               th:checked="${filterFood==false}">
+                                    </div>
+                                    <div class="input-group-text">nee</div>
+                                </div>
                             </div>
                         </div>
                     </div>
