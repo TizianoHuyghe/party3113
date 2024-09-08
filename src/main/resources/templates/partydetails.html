@@ -27,6 +27,8 @@
     <div class="row my-3 p-2">
         <div class="col col-12">
             <span th:text="*{#temporals.format(date, 'dd/MM/yyyy')}"/>
+            in
+            <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}"></a>
         </div>
     </div>
     <div class="row my-3 p-2">
@@ -39,6 +41,9 @@
             <span th:if="*{pricePresaleInEur!=null && priceInEur!=null}"> / </span>
             <span th:if="*{priceInEur!=null}"
                   th:text="|*{priceInEur}${'&euro;'} (aan de kassa)|"/>
+        </div>
+        <div class="col-12">
+            <span th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km van openbaar vervoer)|"/>
         </div>
         <div class="col-12" th:text="|deuren: *{#temporals.format(doors, 'HH:mm')}|"/>
         <div class="col-12 my-3 p-2" th:if="*{!extraInfo.isBlank()}" th:text="*{extraInfo}"/>
