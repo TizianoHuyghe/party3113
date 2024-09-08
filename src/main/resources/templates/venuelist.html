@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width: 85vw" >
             <form th:action="@{/venuelist}">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -29,11 +29,20 @@
                             <div class="col-12 p-1">
                                 <h5>capaciteit</h5>
                             </div>
-                            <div class="col-12 p-1">
+                            <div class="col-12 col-md-6 p-1">
                                 <label class="form-label">minimum</label>
                                 <div class="input-group">
                                     <input type="number" aria-label="minimum capaciteit" name="minCapacity"
                                            th:value="${param.minCapacity}"
+                                           step="50">
+                                    <span class="input-group-text">personen</span>
+                                </div>
+                            </div>
+                            <div class="col-12  col-md-6 p-1">
+                                <label class="form-label">maximum</label>
+                                <div class="input-group">
+                                    <input type="number" aria-label="maximum capaciteit" name="maxCapacity"
+                                           th:value="${param.maxCapacity}"
                                            step="50">
                                     <span class="input-group-text">personen</span>
                                 </div>

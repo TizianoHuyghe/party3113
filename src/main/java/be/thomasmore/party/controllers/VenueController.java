@@ -23,9 +23,10 @@ public class VenueController {
 
     @GetMapping("/venuelist")
     public String venuelist(Model model,
-                            @RequestParam(required = false) Integer minCapacity) {
-        logger.info(String.format("venueList -- min=%d", minCapacity));
-        final List<Venue> allVenues = venueRepository.findByFilter(minCapacity);
+                            @RequestParam(required = false) Integer minCapacity,
+                            @RequestParam(required = false) Integer maxCapacity) {
+        logger.info(String.format("venueListWithFilter -- min=%d, max=%d", minCapacity, maxCapacity));
+        final List<Venue> allVenues = venueRepository.findByFilter(minCapacity, maxCapacity);
 
         model.addAttribute("venues", allVenues);
         return "venuelist";
