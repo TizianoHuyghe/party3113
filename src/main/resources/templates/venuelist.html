@@ -48,6 +48,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5>afstand van openbaar vervoer</h5>
+                            </div>
+                            <div class="col-12 input-group p-1">
+                                <input type="number" aria-label="afstand van openbaar vervoer" name="maxDistance"
+                                       th:value="${param.maxDistance} ? ${param.maxDistance} : ''" step="1">
+                                <span class="input-group-text">km maximum</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
