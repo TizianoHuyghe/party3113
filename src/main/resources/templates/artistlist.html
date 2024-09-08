@@ -7,6 +7,16 @@
 
 <main class="container">
     <h2>artiesten</h2>
+    <div class="row ">
+        <div class="col col-4" th:text=" |${artists.size()} artiesten gevonden|"/>
+        <div class="col col-8 text-end">
+            <form th:action="@{|/artistlist|}">
+                <input type="search" id="keyword" name="keyword" th:value="${param.keyword}" class="align-middle">
+                <button type="submit" class="btn btn-outline-primary btn-sm">zoek</button>
+            </form>
+        </div>
+    </div>
+
     <div class="row mt-3">
         <div th:each="artist:${artists}" class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div class="card m-1 p-2 text-center">
