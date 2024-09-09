@@ -1,12 +1,10 @@
 package be.thomasmore.party.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collection;
 
 @Entity
 public class Party {
@@ -21,6 +19,8 @@ public class Party {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Artist> artists;
 
     public Integer getId() {
         return id;
@@ -84,6 +84,14 @@ public class Party {
 
     public void setVenue(Venue venue) {
         this.venue = venue;
+    }
+
+    public Collection<Artist> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Collection<Artist> artists) {
+        this.artists = artists;
     }
 }
 
