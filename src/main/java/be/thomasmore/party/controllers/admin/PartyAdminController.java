@@ -40,6 +40,7 @@ public class PartyAdminController {
     public String partyEditPost(@PathVariable int id,
                                 Party party) {
         logger.info("partyEditPost " + id + " -- new name=" + party.getName());
+        partyRepository.save(party);
         return "admin/partyedit";
     }
 }
