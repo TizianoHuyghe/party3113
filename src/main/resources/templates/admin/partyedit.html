@@ -7,7 +7,7 @@
 <div th:replace="~{fragments/header :: navbar}"/>
 
 <main class="container" th:if="${party}" th:object="${party}">
-    <form th:action="@{|/admin/partyedit/*{id}|}" class="row g-3">
+    <form th:action="@{|/admin/partyedit/*{id}|}" method="post" class="row g-3">
         <div class="row my-3">
             <div class="col-6">
                 <h2 th:text="*{name}"/>
