@@ -27,6 +27,24 @@
             <label for="partyName" class="form-label">naam </label>
             <input id="partyName" focus class="form-control" th:field="*{name}">
         </div>
+        <div class="col-6">
+            <label for="pricePresaleInEur" class="form-label">prijs voorverkoop </label>
+            <div class="input-group ">
+                <input id="pricePresaleInEur" th:field="*{pricePresaleInEur}" class="form-control">
+                <span class="input-group-text">&euro;</span>
+            </div>
+        </div>
+        <div class="col-6">
+            <label for="priceInEur" class="form-label">prijs aan de kassa </label>
+            <div class="input-group ">
+                <input id="priceInEur" th:field="*{priceInEur}" class="form-control">
+                <span class="input-group-text">&euro;</span>
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="extraInfo" class="form-label">extra info </label>
+            <textarea id="extraInfo" class="form-control" th:field="*{extraInfo}"/>
+        </div>
         <div class="col-12">
             <a th:href="@{|/partydetails/*{venue.id}|}">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
