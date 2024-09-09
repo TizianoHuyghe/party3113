@@ -7,40 +7,33 @@
 <div th:replace="~{fragments/header :: navbar}"/>
 
 <main class="container" th:if="${party}" th:object="${party}">
-    <div class="row my-3">
-        <div class="col-12">
-            <h2 th:text="*{name}"/>
+    <form th:action="@{|/admin/partyedit/*{id}|}" class="row g-3">
+        <div class="row my-3">
+            <div class="col-6">
+                <h2 th:text="*{name}"/>
+            </div>
+            <div class="col-6 text-end">
+                <button type="submit" class="btn btn-primary">save</button>
+            </div>
         </div>
-    </div>
-    <div class="row my-3 p-2">
-        <div class="col col-12">
-            <span th:text="*{#temporals.format(date, 'dd/MM/yyyy')}"/>
-            in
-            <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}"></a>
-        </div>
-    </div>
-    <div class="row my-3 p-2">
-        <h3 th:if="*{pricePresaleInEur==null && priceInEur==null}">
-            Gratis Party!
-        </h3>
-        <div class="col-12">
-            <span th:if="*{pricePresaleInEur!=null}"
-                  th:text="|*{pricePresaleInEur}${'&euro;'} (voorverkoop) |"/>
-            <span th:if="*{pricePresaleInEur!=null && priceInEur!=null}"> / </span>
-            <span th:if="*{priceInEur!=null}"
-                  th:text="|*{priceInEur}${'&euro;'} (aan de kassa)|"/>
+        <div class="row my-3 p-2">
+            <div class="col col-12">
+                <span th:text="*{#temporals.format(date, 'dd/MM/yyyy')}"/>
+                in
+                <a th:href="@{|/venuedetails/*{venue.id}|}" th:text="*{venue.venueName}"></a>
+            </div>
         </div>
         <div class="col-12">
-            <span th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km van openbaar vervoer)|"/>
+            <label for="partyName" class="form-label">naam </label>
+            <input id="partyName" focus class="form-control" th:field="*{name}">
         </div>
-        <div class="col-12" th:text="|deuren: *{#temporals.format(doors, 'HH:mm')}|"/>
-        <div class="col-12 my-3 p-2" th:if="*{!extraInfo.isBlank()}" th:text="*{extraInfo}"/>
-    </div>
-    <div class="col-12">
-        <a th:href="@{|/partydetails/*{venue.id}|}">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
-        </a>
-    </div>
+        <div class="col-12">
+            <a th:href="@{|/partydetails/*{venue.id}|}">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+            </a>
+            <button type="submit" class="btn btn-primary">save</button>
+        </div>
+    </form>
 </main>
 <main class="container" th:unless="${party}">
     <p>geen geldige party gekozen</p>
