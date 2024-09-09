@@ -21,6 +21,8 @@ public class Party {
     private Venue venue;
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Artist> artists;
+    @ManyToMany(mappedBy = "parties", fetch = FetchType.LAZY)
+    private Collection<Animal> animals;
 
     public Integer getId() {
         return id;
@@ -92,6 +94,14 @@ public class Party {
 
     public void setArtists(Collection<Artist> artists) {
         this.artists = artists;
+    }
+
+    public Collection<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Collection<Animal> animals) {
+        this.animals = animals;
     }
 }
 
