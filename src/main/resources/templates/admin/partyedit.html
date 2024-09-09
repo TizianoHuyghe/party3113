@@ -36,6 +36,11 @@
         <div class="col-12" th:text="|deuren: *{#temporals.format(doors, 'HH:mm')}|"/>
         <div class="col-12 my-3 p-2" th:if="*{!extraInfo.isBlank()}" th:text="*{extraInfo}"/>
     </div>
+    <div class="col-12">
+        <a th:href="@{|/partydetails/*{venue.id}|}">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+        </a>
+    </div>
 </main>
 <main class="container" th:unless="${party}">
     <p>geen geldige party gekozen</p>

@@ -8,8 +8,13 @@
 
 <main class="container" th:if="${party}" th:object="${party}">
     <div class="row my-3">
-        <div class="col-12">
+        <div class="col-6">
             <h2 th:text="*{name}"/>
+        </div>
+        <div class="col-6 text-end">
+            <a th:href="@{|/admin/partyedit/*{id}|}">
+                <button class="btn btn-outline-primary">edit</button>
+            </a>
         </div>
     </div>
     <div class="row">
