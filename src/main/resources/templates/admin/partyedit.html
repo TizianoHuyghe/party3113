@@ -27,6 +27,13 @@
             <label for="partyName" class="form-label">naam </label>
             <input id="partyName" focus class="form-control" th:field="*{name}">
         </div>
+        <div class="col-12">
+            <label for="venuewhere" class="form-label">zaal </label>
+            <select id="venuewhere" class="form-select" th:field="*{venue}">
+                <option th:each="v : ${venues}" th:selected="*{venue}"
+                        th:value="${v.id}" th:text="${v.venueName}"></option>
+            </select>
+        </div>
         <div class="col-6">
             <label for="date" class="form-label">datum</label>
             <input type="date" id="date" name="date" th:value="*{date}" class="form-control">

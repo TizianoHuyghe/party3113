@@ -2,6 +2,7 @@ package be.thomasmore.party.controllers.admin;
 
 import be.thomasmore.party.model.Party;
 import be.thomasmore.party.repositories.PartyRepository;
+import be.thomasmore.party.repositories.VenueRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class PartyAdminController {
 
     @Autowired
     private PartyRepository partyRepository;
+    @Autowired
+    private VenueRepository venueRepository;
 
     @ModelAttribute("party")
     public Party findParty(@PathVariable(required = false) Integer id) {
@@ -33,6 +36,7 @@ public class PartyAdminController {
     public String partyEdit(Model model,
                             @PathVariable int id) {
         logger.info("partyEdit " + id);
+        model.addAttribute("venues", venueRepository.findAll());
         return "admin/partyedit";
     }
 
