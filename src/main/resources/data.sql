@@ -112,80 +112,97 @@ VALUES (8, 'Kryptonight',
 
 
 INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
-VALUES (1, 'Big Spring Party', 6, 10, '1 cocktail included',
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES ('Big Spring Party', 6, 10, '1 cocktail included',
         '2025-03-21', '10:00', 1);
 
 INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
-VALUES (2, 'Liberty 2022', 4, 6, 'free vestiaire, viplounge',
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES ('Liberty 2022', 4, 6, 'free vestiaire, viplounge',
         '2025-04-19', '22:00', 2);
 
 INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
-VALUES (3, 'Uppercuts', null, null, ' ',
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES ('Uppercuts', null, null, ' ',
         '2022-03-16', '21:00', 4);
 
 INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
-VALUES (4, 'Zoetzuur', null, null, 'Zoete house / Zure techno',
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES ('Zoetzuur', null, null, 'Zoete house / Zure techno',
         '2025-05-03', '21:00', 4);
 
 INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
-VALUES (5, 'Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES ('Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
         '2025-04-25', '21:00', 4);
 
 INSERT INTO PARTY
-(ID, name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
-VALUES (6, 'Sapphire Soiree', 45, 45,
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, venue_Id)
+VALUES ('Sapphire Soiree', 45, 45,
         'JCI Mechelen bestaat 45 jaar! En dat saffieren jubileum vieren we graag in stijl met een galabal in Kasteel Tivoli. En jij kan erbij zijn!',
         '2025-03-26', '21:00', 10);
 
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
-VALUES (1, 1);
+VALUES (select id from party where name = 'Big Spring Party', 1);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
-VALUES (1, 2);
+VALUES (select id from party where name = 'Big Spring Party', 2);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
-VALUES (2, 2);
+VALUES (select id from party where name = 'Liberty 2022', 2);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
-VALUES (3, 3);
+VALUES (select id from party where name='Uppercuts', 3);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
-VALUES (3, 5);
+VALUES (select id from party where name='Uppercuts', 5);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
-VALUES (4, 5);
+VALUES (select id from party where name='Zoetzuur', 5);
 
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (1, 'Gillende Giraf', 'Mechelen','maakt altijd veel lawaai');
+VALUES (1, 'Gillende Giraf', 'Mechelen', 'maakt altijd veel lawaai');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (2, 'Dorstige Dromedaris', 'Leest','drinkt alles op');
+VALUES (2, 'Dorstige Dromedaris', 'Leest', 'drinkt alles op');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (3, 'Dansende Draak', 'Hombeek','de stukken vliegen ervan af');
+values (3, 'Dansende Draak', 'Hombeek', 'de stukken vliegen ervan af');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (4, 'Zingende Zebra', 'Leest','denkt dat hij goed kan zingen');
+values (4, 'Zingende Zebra', 'Leest', 'denkt dat hij goed kan zingen');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (5, 'Drinkende Das', 'Hombeek','stopt niet');
+values (5, 'Drinkende Das', 'Hombeek', 'stopt niet');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (6, 'Zuipende Zalm', 'Rumst','die wil je niet op je feest');
+values (6, 'Zuipende Zalm', 'Rumst', 'die wil je niet op je feest');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (7, 'Feestende Flamingo', 'Mechelen','jeeeee');
+values (7, 'Feestende Flamingo', 'Mechelen', 'jeeeee');
 INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (8, 'Kotsende Kikker', 'Mechelen','aie aie aie');
+values (8, 'Kotsende Kikker', 'Mechelen', 'aie aie aie');
 
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (1,1);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (2,2);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (2,3);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (2,4);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (2,5);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (3,1);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (3,2);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (4,3);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (5,4);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (5,5);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (5,1);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (5,2);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (6,3);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (7,4);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (8,1);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (8,2);
-INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (8,3);
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (1, select id from party where name = 'Big Spring Party');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (2, select id from party where name = 'Liberty 2022');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (2, select id from party where name = 'Uppercuts');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (2, select id from party where name = 'Zoetzuur');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (2, select id from party where name = 'Oldies but Goldies');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (3, select id from party where name = 'Big Spring Party');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (3, select id from party where name = 'Liberty 2022');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (4, select id from party where name = 'Uppercuts');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (5, select id from party where name = 'Zoetzuur');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (5, select id from party where name = 'Oldies but Goldies');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (5, select id from party where name = 'Big Spring Party');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (5, select id from party where name = 'Liberty 2022');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (6, select id from party where name = 'Uppercuts');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (7, select id from party where name = 'Zoetzuur');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (8, select id from party where name = 'Big Spring Party');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (8, select id from party where name = 'Liberty 2022');
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (8, select id from party where name = 'Uppercuts');

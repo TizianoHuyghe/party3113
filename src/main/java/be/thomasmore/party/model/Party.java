@@ -8,6 +8,7 @@ import java.util.Collection;
 
 @Entity
 public class Party {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
     private String name;
