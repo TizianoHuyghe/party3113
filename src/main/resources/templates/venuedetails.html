@@ -47,14 +47,24 @@
              th:text="|max *{capacity} personen|"/>
         <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
              th:text="|*{distanceFromPublicTransportInKm}km van openbaar vervoer|"/>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2" th:if="*{foodProvided}">
+            eten is voorzien
+        </div>
         <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
-             th:text="|eten voorzien: *{foodProvided ? 'ja' : 'nee'}|"/>
+             th:if="*{indoor && outdoor}">
+            binnen && buiten
+        </div>
         <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
-             th:text="|binnen: *{indoor ? 'ja' : 'nee'}|"/>
+             th:if="*{indoor && !outdoor}">
+            alleen binnen
+        </div>
         <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
-             th:text="|buiten: *{outdoor ? 'ja' : 'nee'}|"/>
-        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2"
-             th:text="|gratis parking: *{freeParkingAvailable ? 'ja' : 'nee'}|"/>
+             th:if="*{!indoor && outdoor}">
+            alleen buiten
+        </div>
+        <div class="col border rounded col-6 col-md-4 col-lg-3 col-xl-2" th:if="*{freeParkingAvailable}">
+            gratis parking
+        </div>
     </div>
 </main>
 <main class="container" th:object="${venue}" th:unless="${venue}">
