@@ -48,8 +48,18 @@
         <div class="col-12" th:text="|deuren: *{#temporals.format(doors, 'HH:mm')}|"/>
         <div class="col-12 my-3 p-2" th:if="*{!extraInfo.isBlank()}" th:text="*{extraInfo}"/>
     </div>
-
-
+    <div class="container mt-5 p-0 border-top" th:if="*{artists.size()>0}">
+        <h3 class="p-2">Lineup: </h3>
+        <div class="row my-1">
+            <div th:each="artist:*{artists}" class="card-group col col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card m-1 p-2 text-center">
+                    <a th:href="@{|/artistdetails/${artist.id}|}" class="link-dark text-decoration-none">
+                        <h6 th:text="${artist.artistName}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 <main class="container" th:unless="${party}">
     <p>geen geldige party gekozen</p>
