@@ -38,14 +38,12 @@
         </div>
         <div class="col-6">
             <label for="date" class="form-label">datum</label>
-            <input type="date" id="date" name="date" th:value="*{date}" class="form-control">
+            <input type="date" id="date" name="date" th:value="*{date}" class="form-control" th:errorclass="is-invalid">
         </div>
         <div class="col-6">
             <label for="doors" class="form-label">deuren </label>
-            <input type="time" id="doors" name="doors" th:value="*{doors}" class="form-control"
-                   placeholder="HH:mm">
+            <input type="time" id="doors" name="doors" th:value="*{doors}" class="form-control" th:errorclass="is-invalid">
         </div>
-
         <div class="col-6">
             <label for="pricePresaleInEur" class="form-label">prijs voorverkoop </label>
             <div class="input-group ">

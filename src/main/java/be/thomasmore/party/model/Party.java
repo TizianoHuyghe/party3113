@@ -2,6 +2,7 @@ package be.thomasmore.party.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,7 +18,9 @@ public class Party {
     private Integer pricePresaleInEur;
     private Integer priceInEur;
     private String extraInfo;
+    @NotNull
     private LocalDate date;
+    @NotNull
     private LocalTime doors;
 
     @ManyToOne(fetch = FetchType.LAZY)
