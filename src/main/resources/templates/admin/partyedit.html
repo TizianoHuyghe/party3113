@@ -63,6 +63,19 @@
             <textarea id="extraInfo" class="form-control" th:field="*{extraInfo}" th:errorclass="is-invalid"/>
         </div>
         <div class="col-12">
+            <label for="artists" class="form-label">artiesten </label>
+            <select multiple id="artists" class="form-select" th:field="*{artists}">
+                <option value=""></option>
+                <option th:each="artist:${artists}" th:value="${artist.id}"
+                        th:text="${artist.artistName}" th:selected="*{artists}">
+                </option>
+            </select>
+            <div class="form-text">
+                <span th:each="artist,stats:*{artists}"
+                      th:text="|${artist.artistName}${stats.last?'':','} |"/>
+            </div>
+        </div>
+        <div class="col-12">
             <a th:href="@{|/partydetails/*{venue.id}|}">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
             </a>

@@ -1,6 +1,7 @@
 package be.thomasmore.party.controllers.admin;
 
 import be.thomasmore.party.model.Party;
+import be.thomasmore.party.repositories.ArtistRepository;
 import be.thomasmore.party.repositories.PartyRepository;
 import be.thomasmore.party.repositories.VenueRepository;
 import jakarta.validation.Valid;
@@ -23,6 +24,8 @@ public class PartyAdminController {
     private PartyRepository partyRepository;
     @Autowired
     private VenueRepository venueRepository;
+    @Autowired
+    private ArtistRepository artistRepository;
 
     @ModelAttribute("party")
     public Party findParty(@PathVariable(required = false) Integer id) {
@@ -41,6 +44,7 @@ public class PartyAdminController {
                             @PathVariable int id) {
         logger.info("partyEdit " + id);
         model.addAttribute("venues", venueRepository.findAll());
+        model.addAttribute("artists", artistRepository.findAll());
         return "admin/partyedit";
     }
 
@@ -52,6 +56,7 @@ public class PartyAdminController {
         logger.info("partyEditPost " + id + " -- new name=" + party.getName());
         if (bindingResult.hasErrors()) {
             model.addAttribute("venues", venueRepository.findAll());
+            model.addAttribute("artists", artistRepository.findAll());
             return "admin/partyedit";
         }
         partyRepository.save(party);
@@ -62,6 +67,7 @@ public class PartyAdminController {
     public String partyNew(Model model) {
         logger.info("partyNew ");
         model.addAttribute("venues", venueRepository.findAll());
+        model.addAttribute("artists", artistRepository.findAll());
         return "admin/partynew";
     }
 
@@ -72,6 +78,7 @@ public class PartyAdminController {
         logger.info("partyNewPost -- new name=" + party.getName() + ", date=" + party.getDate());
         if (bindingResult.hasErrors()) {
             model.addAttribute("venues", venueRepository.findAll());
+            model.addAttribute("artists", artistRepository.findAll());
             return "admin/partynew";
         }
         Party newParty = partyRepository.save(party);
