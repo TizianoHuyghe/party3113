@@ -16,6 +16,8 @@
                 <button type="submit" class="btn btn-primary">save</button>
             </div>
         </div>
+        <div class="col-12 bg-danger text-white" th:if="${#fields.hasErrors('*')}">ERROR - data is not saved</div>
+
         <div class="row my-3 p-2">
             <div class="col col-12">
                 <span th:text="*{#temporals.format(date, 'dd/MM/yyyy')}"/>
@@ -25,11 +27,11 @@
         </div>
         <div class="col-12">
             <label for="partyName" class="form-label">naam </label>
-            <input id="partyName" focus class="form-control" th:field="*{name}">
+            <input id="partyName" focus class="form-control" th:field="*{name}" th:errorclass="is-invalid">
         </div>
         <div class="col-12">
             <label for="venuewhere" class="form-label">zaal </label>
-            <select id="venuewhere" class="form-select" th:field="*{venue}">
+            <select id="venuewhere" class="form-select" th:field="*{venue}" >
                 <option th:each="v : ${venues}" th:selected="*{venue}"
                         th:value="${v.id}" th:text="${v.venueName}"></option>
             </select>
