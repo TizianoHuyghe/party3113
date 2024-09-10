@@ -31,7 +31,7 @@
         </div>
         <div class="col-12">
             <label for="venuewhere" class="form-label">zaal </label>
-            <select id="venuewhere" class="form-select" th:field="*{venue}" >
+            <select id="venuewhere" class="form-select" th:field="*{venue}" th:errorclass="is-invalid">
                 <option th:each="v : ${venues}" th:selected="*{venue}"
                         th:value="${v.id}" th:text="${v.venueName}"></option>
             </select>
@@ -47,20 +47,20 @@
         <div class="col-6">
             <label for="pricePresaleInEur" class="form-label">prijs voorverkoop </label>
             <div class="input-group ">
-                <input id="pricePresaleInEur" th:field="*{pricePresaleInEur}" class="form-control">
+                <input id="pricePresaleInEur" th:field="*{pricePresaleInEur}" class="form-control" th:errorclass="is-invalid">
                 <span class="input-group-text">&euro;</span>
             </div>
         </div>
         <div class="col-6">
             <label for="priceInEur" class="form-label">prijs aan de kassa </label>
             <div class="input-group ">
-                <input id="priceInEur" th:field="*{priceInEur}" class="form-control">
+                <input id="priceInEur" th:field="*{priceInEur}" class="form-control" th:errorclass="is-invalid">
                 <span class="input-group-text">&euro;</span>
             </div>
         </div>
         <div class="col-12">
             <label for="extraInfo" class="form-label">extra info </label>
-            <textarea id="extraInfo" class="form-control" th:field="*{extraInfo}"/>
+            <textarea id="extraInfo" class="form-control" th:field="*{extraInfo}" th:errorclass="is-invalid"/>
         </div>
         <div class="col-12">
             <a th:href="@{|/partydetails/*{venue.id}|}">
