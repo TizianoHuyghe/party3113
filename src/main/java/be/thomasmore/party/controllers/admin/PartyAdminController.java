@@ -55,7 +55,7 @@ public class PartyAdminController {
             return "admin/partyedit";
         }
         partyRepository.save(party);
-        return "redirect:/partydetails/"+id;
+        return "redirect:/partydetails/" + id;
     }
 
     @GetMapping("/partynew")
@@ -67,8 +67,13 @@ public class PartyAdminController {
 
     @PostMapping("/partynew")
     public String partyNewPost(Model model,
-                               Party party) {
+                               @Valid Party party,
+                               BindingResult bindingResult) {
         logger.info("partyNewPost -- new name=" + party.getName() + ", date=" + party.getDate());
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("venues", venueRepository.findAll());
+            return "admin/partynew";
+        }
         Party newParty = partyRepository.save(party);
         return "redirect:/partydetails/" + newParty.getId();
     }
