@@ -7,15 +7,7 @@
 <div th:replace="~{fragments/header :: navbar}"/>
 
 <main class="container">
-    <h2 th:if="${loginName!=null}" th:text="|Hello ${loginName}|" class="hello">hello</h2>
-    <div class="">
-        <a th:if="${loginName!=null}" th:href="@{|/logout|}" class="nav-link">
-            <button>logout</button>
-        </a>
-        <a th:if="${loginName==null}" th:href="@{|/login|}" class="nav-link">
-            <button>login</button>
-        </a>
-    </div>
+    <h2 sec:authorize="isAuthenticated()">Hello <span sec:authentication="name" ></span>!</h2>
     <img th:src="@{/img/party.png}" alt="Party" class="img-fluid">
 </main>
 

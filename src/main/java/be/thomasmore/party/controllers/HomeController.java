@@ -21,7 +21,6 @@ public class HomeController {
     public String home(Model model, Principal principal) {
         final String loginName = principal != null ? principal.getName() : null;
         logger.info("homepage - logged in as " + loginName);
-        model.addAttribute("loginName", loginName);
         return "home";
     }
 
