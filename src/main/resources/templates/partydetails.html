@@ -11,10 +11,17 @@
         <div class="col-6">
             <h2 th:text="*{name}"/>
         </div>
-        <div class="col-6 text-end">
-            <a th:href="@{|/admin/partyedit/*{id}|}" sec:authorize="hasAuthority('ADMIN')">
+        <div class="col-6 text-end" sec:authorize="hasAuthority('ADMIN')">
+            <a th:href="@{|/admin/partyedit/*{id}|}" >
                 <button class="btn btn-outline-primary">edit</button>
             </a>
+        </div>
+        <div class="col-6 text-end" sec:authorize="hasAuthority('USER')">
+            <form th:action="@{|/partygoing/${party.id}|}" method="post">
+                <span th:if="${isGoing}">Jij gaat, <span sec:authentication="name"></span>!!</span>
+                <button type="submit" value="toggle" th:text="${isGoing}? 'nee toch niet': 'ja ik wil gaan'"
+                        class="btn btn-primary"></button>
+            </form>
         </div>
     </div>
     <div class="row">
