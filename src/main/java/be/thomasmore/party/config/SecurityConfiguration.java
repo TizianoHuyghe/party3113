@@ -46,7 +46,10 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasAuthority("ADMIN")
                 .anyRequest().permitAll());
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin(form -> form
+                .loginPage("/user/login")
+                .permitAll()
+        );
 
         //to enable h2-console:
         http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));
