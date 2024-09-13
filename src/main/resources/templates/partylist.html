@@ -11,7 +11,7 @@
             <h2>parties</h2>
         </div>
         <div class="col-6 text-end">
-            <a th:href="@{|/admin/partynew|}">
+            <a th:href="@{|/admin/partynew|}" sec:authorize="hasAuthority('ADMIN')">
                 <button class="btn btn-outline-primary">nieuw</button>
             </a>
         </div>

@@ -12,7 +12,7 @@
             <h2 th:text="*{name}"/>
         </div>
         <div class="col-6 text-end">
-            <a th:href="@{|/admin/partyedit/*{id}|}">
+            <a th:href="@{|/admin/partyedit/*{id}|}" sec:authorize="hasAuthority('ADMIN')">
                 <button class="btn btn-outline-primary">edit</button>
             </a>
         </div>
