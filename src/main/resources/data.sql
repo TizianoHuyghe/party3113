@@ -157,22 +157,81 @@ VALUES (select id from party where name='Uppercuts', 5);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
 VALUES (select id from party where name='Zoetzuur', 5);
 
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (1, 'Gillende Giraf', 'Mechelen', 'maakt altijd veel lawaai');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (2, 'Dorstige Dromedaris', 'Leest', 'drinkt alles op');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (3, 'Dansende Draak', 'Hombeek', 'de stukken vliegen ervan af');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (4, 'Zingende Zebra', 'Leest', 'denkt dat hij goed kan zingen');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (5, 'Drinkende Das', 'Hombeek', 'stopt niet');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (6, 'Zuipende Zalm', 'Rumst', 'die wil je niet op je feest');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (7, 'Feestende Flamingo', 'Mechelen', 'jeeeee');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (8, 'Kotsende Kikker', 'Mechelen', 'aie aie aie');
+-- 2 default users:
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('admin', '$2a$10$9MIX8kYPkuB7uE/H5nHF8.KG6.YdjBA/voOnjSZnZDxLXL/2BIerS', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('admin', 'ADMIN');
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('marie', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('marie', 'USER');
+
+
+-- the party animal users:
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('giraf', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('giraf', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (1, 'Gillende Giraf', 'Mechelen', 'maakt altijd veel lawaai', 'giraf');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('dromedaris', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('dromedaris', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (2, 'Dorstige Dromedaris', 'Leest', 'drinkt alles op', 'dromedaris');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('draak', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('draak', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (3, 'Dansende Draak', 'Hombeek', 'de stukken vliegen ervan af', 'draak');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('zebra', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('zebra', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (4, 'Zingende Zebra', 'Leest', 'denkt dat hij goed kan zingen', 'zebra');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('das', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('das', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (5, 'Drinkende Das', 'Hombeek', 'stopt niet', 'das');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('zalm', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('zalm', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (6, 'Zuipende Zalm', 'Rumst', 'die wil je niet op je feest', 'zalm');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('flamingo', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('flamingo', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (7, 'Feestende Flamingo', 'Mechelen', 'jeeeee', 'flamingo');
+
+
+INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
+VALUES ('kikker', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
+INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
+VALUES ('kikker', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USERNAME)
+VALUES (8, 'Kotsende Kikker', 'Mechelen', 'aie aie aie', 'kikker');
 
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
 values (1, select id from party where name = 'Big Spring Party');
@@ -208,14 +267,3 @@ INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
 values (8, select id from party where name = 'Liberty 2022');
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
 values (8, select id from party where name = 'Uppercuts');
-
-
-INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
-VALUES ('admin', '$2a$10$9MIX8kYPkuB7uE/H5nHF8.KG6.YdjBA/voOnjSZnZDxLXL/2BIerS', true);
-INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
-VALUES ('admin', 'ADMIN');
-
-INSERT INTO USERS (USERNAME, PASSWORD, ENABLED)
-VALUES ('marie', '$2a$10$9TeBFudS7HsgCa4sSvP//O627sMq.KiTFrOr8IzrVlYw5c8aoKzNm', true);
-INSERT INTO AUTHORITIES (USERNAME, AUTHORITY)
-VALUES ('marie', 'USER');
