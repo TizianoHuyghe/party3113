@@ -1,14 +1,12 @@
 package be.thomasmore.party.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.Collection;
 
 @Entity
 public class Animal {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
     private String name;
