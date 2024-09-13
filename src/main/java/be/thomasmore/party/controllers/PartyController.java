@@ -36,6 +36,7 @@ public class PartyController {
 
     @GetMapping({"partydetails/{id}", "/partydetails"})
     public String partyDetails(Model model,
+                               Principal principal,
                                @PathVariable(required = false) Integer id) {
         if (id == null) return "partydetails";
 
@@ -43,7 +44,17 @@ public class PartyController {
         long count = partyRepository.count();
 
         if (optionalParty.isPresent()) {
+            Party foundPartyForAnimal = null;
+            if (principal != null) {
+                Optional<Animal> optionalAnimal = animalRepository.findByUsername(principal.getName());
+                if (optionalAnimal.isPresent()) {
+                    Animal animal = optionalAnimal.get();
+                    foundPartyForAnimal = findPartyById(animal.getParties(), id);
+                }
+            }
+
             model.addAttribute("party", optionalParty.get());
+            model.addAttribute("isGoing", foundPartyForAnimal != null);
             model.addAttribute("prevId", id > 1 ? id - 1 : count);
             model.addAttribute("nextId", id < count ? id + 1 : 1);
         }
@@ -66,6 +77,8 @@ public class PartyController {
             Party foundPartyForAnimal = findPartyById(animal.getParties(), party.getId());
             if (foundPartyForAnimal == null)
                 animal.getParties().add(party);
+            else
+                animal.getParties().remove(foundPartyForAnimal);
             animalRepository.save(animal);
         }
         return "redirect:/partydetails/" + id;
