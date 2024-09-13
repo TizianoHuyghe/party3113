@@ -1,9 +1,9 @@
 package be.thomasmore.party.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
@@ -22,6 +22,10 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration {
+
+    @Value("${security.h2-console-needed}")
+    private boolean h2ConsoleNeeded;
+
     /**
      * @noinspection SpringJavaInjectionPointsAutowiringInspection
      */
@@ -53,8 +57,12 @@ public class SecurityConfiguration {
         http.logout(form -> form.logoutUrl("/user/logout"));
 
         //to enable h2-console:
-        http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));
-        http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
+        if (h2ConsoleNeeded) {
+            //h2ConsoleNeeded has to be false when deploying on google cloud, otherwise the login does not work
+            //h2ConsoleNeeded has to be true when running locally
+            http.csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()));
+            http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
+        }
 
         return http.build();
     }
