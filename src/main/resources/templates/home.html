@@ -7,8 +7,23 @@
 <div th:replace="~{fragments/header :: navbar}"/>
 
 <main class="container">
-    <h2 sec:authorize="isAuthenticated()">Hello <span sec:authentication="name" ></span>!</h2>
     <img th:src="@{/img/party.png}" alt="Party" class="img-fluid">
+    <div sec:authorize="isAuthenticated()" th:if="${animal}" class="">
+        <h2>Hello <span sec:authentication="name"></span>!!!!</h2>
+        <div class="container mt-2 p-0" th:if="*{animal.parties.size()>0}">
+            <h3>Jij gaat naar</h3>
+            <div class="row my-1 ">
+                <div th:each="party:*{animal.parties}" class="card-group col col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card m-1 p-2 text-center">
+                        <a th:href="@{|/partydetails/${party.id}|}" class="link-dark text-decoration-none">
+                            <h4 th:text="${party.name}"/>
+                            <div th:text="${party.date}"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 <div th:replace="~{fragments/footer :: footerHome}"></div>
