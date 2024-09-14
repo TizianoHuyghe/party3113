@@ -23,7 +23,8 @@ public class Party {
     @NotNull
     private LocalTime doors;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional=false)
     private Venue venue;
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Artist> artists;
