@@ -6,6 +6,16 @@
 <div th:replace="~{fragments/header :: navbar}"/>
 
 <main class="container">
+    <div class="row my-3">
+        <div class="col-6">
+            <h2>parties</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a th:href="@{|/admin/partynew|}">
+                <button class="btn btn-outline-primary">nieuw</button>
+            </a>
+        </div>
+    </div>
     <div class="row mt-3">
         <div th:each="party:${parties}" class="card-group col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div class="card m-1 p-2 text-center">
