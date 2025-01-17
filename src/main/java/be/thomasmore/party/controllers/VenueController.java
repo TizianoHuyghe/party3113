@@ -15,6 +15,11 @@ public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
 
+    @GetMapping("/venuelist")
+    public String venuelist(Model model) {
+        return "venuelist";
+    }
+
     @GetMapping("/venuedetails/{id}")
     public String venuedetails(Model model, @PathVariable int id) {
         Optional<Venue> venueFromDb = venueRepository.findById(id);
