@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/header :: headerelement('Let\'s party!')}"/>
+
+<body>
+
+<div th:replace="~{fragments/header :: navbar}"/>
+
+<main class="container" th:if="${party}" th:object="${party}">
+    <div class="row my-3">
+        <div class="col-12">
+            <h2 th:text="*{name}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-start">
+            <a th:href="@{|/partydetails/${prevId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&lt;</button>
+            </a>
+        </div>
+        <div class="col text-end">
+            <a th:href="@{|/partydetails/${nextId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&gt;</button>
+            </a>
+        </div>
+    </div>
+    <div class="row my-3 p-2">
+        <div class="col col-12">
+            <span th:text="*{#temporals.format(date, 'dd/MM/yyyy')}"/>
+        </div>
+    </div>
+    <div class="row my-3 p-2">
+        <h3 th:if="*{pricePresaleInEur==null && priceInEur==null}">
+            Gratis Party!
+        </h3>
+        <div class="col-12">
+            <span th:if="*{pricePresaleInEur!=null}"
+                  th:text="|*{pricePresaleInEur}${'&euro;'} (voorverkoop) |"/>
+            <span th:if="*{pricePresaleInEur!=null && priceInEur!=null}"> / </span>
+            <span th:if="*{priceInEur!=null}"
+                  th:text="|*{priceInEur}${'&euro;'} (aan de kassa)|"/>
+        </div>
+        <div class="col-12" th:text="|deuren: *{#temporals.format(doors, 'HH:mm')}|"/>
+        <div class="col-12 my-3 p-2" th:if="*{!extraInfo.isBlank()}" th:text="*{extraInfo}"/>
+    </div>
+
+
+</main>
+<main class="container" th:unless="${party}">
+    <p>geen geldige party gekozen</p>
+</main>
+
+<div th:replace="~{fragments/footer :: footerCommon}"></div>
+
+</body>
+</html>
