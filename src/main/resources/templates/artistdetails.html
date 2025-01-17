@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/header :: headerelement('Let\'s party!')}"/>
+
+<body>
+
+<div th:replace="~{fragments/header :: navbar}"/>
+
+<main class="container" th:if="${artist}" th:object="${artist}">
+    <h2 th:text="*{artistName}"/>
+    <div class="row mx-0">
+        <h4 th:text="*{genre}"/>
+        <div th:text="|portfolio: *{portfolio}|" th:if="*{!portfolio.isBlank()}"/>
+        <div th:text="*{bio}" class="border my-2 p-2"/>
+
+        <div>
+            <a th:href="*{linkMoreInfo}" th:text="*{linkMoreInfo}" target="_blank"/>
+        </div>
+    </div>
+
+</main>
+<main class="container" th:unless="${artist}">
+    <p>geen geldige artiest gekozen</p>
+</main>
+
+<div th:replace="~{fragments/footer :: footerCommon}"></div>
+
+</body>
+</html>
