@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<<head th:replace="~{fragments/header :: headerelement('Let\'s party!')}"/>
+
+<body>
+
+<div th:replace="~{fragments/header :: navbar}"/>
+
+<main class="container" th:if="${animal}" th:object="${animal}">
+    <h2 th:text="*{name}"/>
+    <div class="row">
+        <div class="col text-start">
+            <a th:href="@{|/animaldetails/${prevId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&lt;</button>
+            </a>
+        </div>
+        <div class="col text-end">
+            <a th:href="@{|/animaldetails/${nextId}|}" class="link-dark text-decoration-none">
+                <button class="btn btn-outline-primary">&gt;</button>
+            </a>
+        </div>
+    </div>
+    <div class="row mx-0 my-3">
+        <div th:text="|woont in *{city}|"/>
+        <div th:text="*{bio}"/>
+    </div>
+    <div class="container mt-5 p-0 border-top" th:if="*{parties.size()>0}">
+        <h3 th:text="|*{name} gaat naar: |" class=" p-2"/>
+        <div class="row my-1 ">
+            <div th:each="party:*{parties}" class="card-group col col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="card m-1 p-2 text-center">
+                    <a th:href="@{|/partydetails/${party.id}|}" class="link-dark text-decoration-none">
+                        <h4 th:text="${party.name}"/>
+                        <div th:text="${#temporals.format(party.date, 'dd/MM/yyyy')}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<main class="container" th:unless="${animal}">
+    <p>geen geldige user</p>
+</main>
+
+<div th:replace="~{fragments/footer :: footerCommon}"></div>
+
+</body>
+</html>
