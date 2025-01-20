@@ -27,6 +27,10 @@
             <label for="partyName" class="form-label">naam </label>
             <input id="partyName" focus class="form-control" th:field="*{name}">
         </div>
+        <div class="col-12">
+            <label for="date" class="form-label">datum</label>
+            <input type="date" id="date" name="date" th:value="*{date}" class="form-control">
+        </div>
         <div class="col-6">
             <label for="pricePresaleInEur" class="form-label">prijs voorverkoop </label>
             <div class="input-group ">
